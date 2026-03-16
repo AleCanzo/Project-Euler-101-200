@@ -5,26 +5,24 @@ index = 0
 TRIANGLES = []
 ax = None
 
-def sign_cross_prod(x, y):
-    XY = y - x
-    O = -x
-    XY = np.append(XY, [0])
-    O = np.append(O, [0])
-    return np.cross(XY, O)[2] > 0
-
-
 def contains_origin(u, v, w):
+
     v = v - u
     w = w - u
     o = -u
-    d = v[0]*w[1] -v[1]*w[0]
-    weight_u = (o[0]*(v[1] - w[1]) + o[1]*(w[0] - v[0]) + v[0]*w[1] - v[1]*w[0])/d
-    weight_v = (o[0]*w[1] - o[1]*w[0])/d
-    weight_w = (o[1]*v[0] - o[0]*v[1])/d
-    if weight_u < 1 and weight_v < 1 and weight_w < 1:
+
+    d = v[0]*w[1] - v[1]*w[0]
+
+    weight_u = (o[0]*(v[1] - w[1]) + o[1]*(w[0] - v[0]) + v[0]*w[1] - v[1]*w[0]) / d
+    weight_v = (o[0]*w[1] - o[1]*w[0]) / d
+    weight_w = (o[1]*v[0] - o[0]*v[1]) / d
+
+    if (0 <= weight_u <= 1 and
+        0 <= weight_v <= 1 and
+        0 <= weight_w <= 1):
         return True
-    else:
-        return False
+
+    return False
 
 
 def viz_triangle(triangles):
