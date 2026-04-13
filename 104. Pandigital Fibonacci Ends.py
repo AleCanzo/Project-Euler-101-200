@@ -10,6 +10,7 @@ def solution(F):
         fib_num = F[n]
         first_nine = str(fib_num)[0:9]
         last_nine = str(fib_num)[:-10:-1]
+        print(first_nine, last_nine, n, fib_num)
         if set(first_nine) == set(map(str,range(1,10))) and set(last_nine) == set(map(str,range(1,10))):
             print(first_nine, last_nine, n, fib_num)
             Flag = True
